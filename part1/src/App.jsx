@@ -1,25 +1,52 @@
-const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+const Header = (props) => {
+  return <h1>{props.course}</h1>
+}
 
+const Content = (props) => {
   return (
     <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <p>{props.part1} - {props.exercises1} units</p>
+      <p>{props.part2} - {props.exercises2} units</p>
+      <p>{props.part3} - {props.exercises3} units</p>
+    </div>
+  )
+}
+
+const Total = (props) => {
+  return <p><strong>Total units:</strong> {props.total}</p>
+}
+
+const Footer = (props) => {
+  return (
+    <footer style={{ marginTop: '2rem', borderTop: '1px solid #ccc', paddingTop: '1rem' }}>
+      <p>{props.name} - {props.courseCode} - {props.section}</p>
+    </footer>
+  )
+}
+
+const App = () => {
+  const course = 'Information Technology'
+  const part1 = 'CSIT340 - Industry Elective 1'
+  const exercises1 = 3
+  const part2 = 'CSIT321 - Applications Development and Emerging Technologies'
+  const exercises2 = 3
+  const part3 = 'IT317 - Project Management for IT'
+  const exercises3 = 3
+
+  const studentName = 'James Sedric E. Mula'
+  const courseCode = 'CSIT340'
+  const section = 'G7' // Replace with your actual section
+
+  return (
+    <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
+      <Header course={course} />
+      <Content 
+        part1={part1} exercises1={exercises1}
+        part2={part2} exercises2={exercises2}
+        part3={part3} exercises3={exercises3}
+      />
+      <Total total={exercises1 + exercises2 + exercises3} />
+      <Footer name={studentName} courseCode={courseCode} section={section} />
     </div>
   )
 }
