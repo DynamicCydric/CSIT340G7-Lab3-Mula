@@ -2,12 +2,18 @@ const Header = (props) => {
   return <h1>{props.course}</h1>
 }
 
+const Part = (props) => {
+  return (
+    <p>{props.name} - {props.exercises} units</p>
+  )
+}
+
 const Content = (props) => {
   return (
     <div>
-      <p>{props.part1} - {props.exercises1} units</p>
-      <p>{props.part2} - {props.exercises2} units</p>
-      <p>{props.part3} - {props.exercises3} units</p>
+      <Part name={props.part1} exercises={props.exercises1} />
+      <Part name={props.part2} exercises={props.exercises2} />
+      <Part name={props.part3} exercises={props.exercises3} />
     </div>
   )
 }
@@ -35,7 +41,7 @@ const App = () => {
 
   const studentName = 'James Sedric E. Mula'
   const courseCode = 'CSIT340'
-  const section = 'G7' // Replace with your actual section
+  const section = 'G7'
 
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
