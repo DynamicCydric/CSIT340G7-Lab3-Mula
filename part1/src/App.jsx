@@ -1,5 +1,5 @@
 const Header = (props) => {
-  return <h1>{props.course}</h1>
+  return <h1>{props.course.name}</h1>
 }
 
 const Part = (props) => {
@@ -11,15 +11,19 @@ const Part = (props) => {
 const Content = (props) => {
   return (
     <div>
-      <Part part={props.parts[0]} />
-      <Part part={props.parts[1]} />
-      <Part part={props.parts[2]} />
+      <Part part={props.course.parts[0]} />
+      <Part part={props.course.parts[1]} />
+      <Part part={props.course.parts[2]} />
     </div>
   )
 }
 
 const Total = (props) => {
-  const total = props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises
+  const total =
+    props.course.parts[0].exercises +
+    props.course.parts[1].exercises +
+    props.course.parts[2].exercises
+
   return <p><strong>Total units:</strong> {total}</p>
 }
 
@@ -32,21 +36,23 @@ const Footer = (props) => {
 }
 
 const App = () => {
-  const course = 'Information Technology'
-  const parts = [
-    {
-      name: 'CSIT340 - Industry Elective 1',
-      exercises: 3
-    },
-    {
-      name: 'CSIT321 - Applications Development and Emerging Technologies',
-      exercises: 3
-    },
-    {
-      name: 'IT317 - Project Management for IT',
-      exercises: 3
-    }
-  ]
+  const course = {
+    name: 'Information Technology',
+    parts: [
+      {
+        name: 'CSIT340 - Industry Elective 1',
+        exercises: 3
+      },
+      {
+        name: 'CSIT321 - Applications Development and Emerging Technologies',
+        exercises: 3
+      },
+      {
+        name: 'IT317 - Project Management for IT',
+        exercises: 3
+      }
+    ]
+  }
 
   const studentName = 'James Sedric E. Mula'
   const courseCode = 'CSIT340'
@@ -55,8 +61,8 @@ const App = () => {
   return (
     <div style={{ padding: '2rem', fontFamily: 'sans-serif' }}>
       <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Content course={course} />
+      <Total course={course} />
       <Footer name={studentName} courseCode={courseCode} section={section} />
     </div>
   )
